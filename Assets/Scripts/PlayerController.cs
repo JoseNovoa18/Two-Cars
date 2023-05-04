@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     public Camera hoodCamera;
     public KeyCode switchKey;
 
+    public string inputID;
+
+
     private void Start()
     {
         
@@ -22,8 +25,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // This is where we get player input 
-        horizontalInput = Input.GetAxis("Horizontal");
-        forwardInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal" + inputID);
+        forwardInput = Input.GetAxis("Vertical" + inputID);
 
         // Moves the car forward based on vertical input
         transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
@@ -36,5 +39,7 @@ public class PlayerController : MonoBehaviour
             mainCamera.enabled = !mainCamera.enabled;
             hoodCamera.enabled = !hoodCamera.enabled;
         }
+
+
     }
 }
